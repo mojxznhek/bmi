@@ -1,10 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
+
     <div class="row justify-content-center">
+         <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">{{ __('Dashboard') }}</div>
 
+                    <div class="card-body">
+                        @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                        @endif
 
+                        {{ __('You are logged in!') }} , {{ Auth::user()->name }} 
+                    </div>
+                </div>
+            </div>
         <div class="col-lg-3 col-6">
             <div class="small-box bg-info">
                 <div class="inner">
@@ -56,24 +71,45 @@
                  
             </div>
         </div>
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
 
-                    <div class="card-body">
-                        @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                        @endif
 
-                        {{ __('You are logged in!') }} , {{ Auth::user()->name }} 
-                    </div>
-                </div>
-            </div>
+        <canvas id="myChart" height="100px"></canvas>
+
+           
     </div>
 </div>
 
 
 </div>
 @endsection
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+<script type="text/javascript">
+  
+      var labels =  {{ Js::from($labels) }};
+      var users =  {{ Js::from($data) }};
+  
+      const data = {
+        labels: labels,
+        datasets: [{
+          label: 'Medical Record',
+          backgroundColor: 'rgb(255, 99, 132)',
+          borderColor: 'rgb(255, 99, 132)',
+          data: users,
+        }]
+      };
+  
+      const config = {
+        type: 'line',
+        data: data,
+        options: {}
+      };
+  
+      const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+      );
+  
+</script>
