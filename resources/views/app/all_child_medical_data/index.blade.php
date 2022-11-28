@@ -116,7 +116,10 @@
                                             <i class="icon ion-md-create"></i>
                                         </button>
                                     </a>
-                                    @endcan @can('view', $childMedicalData)
+                                    @endcan 
+
+                                    
+                                    @can('view', $childMedicalData)
                                     <a
                                         href="{{ route('all-child-medical-data.show', $childMedicalData) }}"
                                     >
@@ -127,7 +130,13 @@
                                             <i class="icon ion-md-eye"></i>
                                         </button>
                                     </a>
-                                    @endcan @can('delete', $childMedicalData)
+                                    
+                                    @endcan 
+
+
+
+                                    
+                                    @can('delete', $childMedicalData)
                                     <form
                                         action="{{ route('all-child-medical-data.destroy', $childMedicalData) }}"
                                         method="POST"
@@ -142,6 +151,9 @@
                                         </button>
                                     </form>
                                     @endcan
+
+
+
                                 </div>
                             </td>
                         </tr>

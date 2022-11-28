@@ -111,8 +111,8 @@
     function calculateBMI () {
         const height = parseFloat(heightInput.value);
         const weight = parseFloat(weightInput.value);
-        const bmi = weight / Math.pow(height, 2);
-        // bmi = bmi.toFixed(2);
+        const bmi = weight /height/height*10000;
+        bmi.value = bmi.toFixed(2);
         document.getElementById('bmi').value = bmi;
         if(bmi < 18.5){
              document.getElementById('remarks').value = "Underweight";

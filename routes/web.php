@@ -8,6 +8,7 @@ use App\Http\Controllers\RhuBhwController;
 use App\Http\Controllers\HealthTipsController;
 use App\Http\Controllers\HealthCategoryController;
 use App\Http\Controllers\ChildMedicalDataController;
+use App\Http\Controllers\ChildListMedicalRecordsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,8 @@ Route::prefix('/')
     ->middleware('auth')
     ->group(function () {
         Route::resource('children', ChildController::class);
+        Route::resource('view-medical', ChildListMedicalRecordsController::class);
+
         Route::get('child-check-up-infos', [
             ChildMedicalDataController::class,
             'index',

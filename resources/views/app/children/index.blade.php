@@ -104,6 +104,20 @@
                                             <i class="icon ion-md-create"></i>
                                         </button>
                                     </a>
+                                    
+                                    @endcan 
+                                    
+                                    @can('view', $child)
+                                    <a
+                                        href="{{ route('view-medical.show', $child) }}"
+                                    >
+                                        <button
+                                            type="button"
+                                            class="btn btn-light"
+                                        >
+                                            <i class="icon ion-md-stats"></i>
+                                        </button>
+                                    </a>
                                     @endcan @can('view', $child)
                                     <a
                                         href="{{ route('children.show', $child) }}"
