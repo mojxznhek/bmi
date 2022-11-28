@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Child;
+use App\Models\RhuBhw;
+use App\Models\ChildMedicalData;
 
 class HomeController extends Controller
 {
@@ -23,6 +27,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+         //count in cards
+        $userCount = User::count();
+        $childCount = Child::count();
+        $rhuCount = RhuBhw::count();
+        $rhuCount = RhuBhw::count();
+        $medCount = ChildMedicalData::count();
+        return view('home',[
+        'userCount' => $userCount,
+        'childCount' => $childCount,
+        'rhuCount' => $rhuCount,
+        'medCount' => $medCount,
+        ]);
     }
 }
